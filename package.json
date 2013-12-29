@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alex Gibbons",
   "license": "MIT",
   "dependencies": {
     "growl": "~1.7.0"
