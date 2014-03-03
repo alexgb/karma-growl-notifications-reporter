@@ -1,7 +1,7 @@
 var util = require('util');
 var growl = require('growl');
 var os = require('os');
-var isDarwin = process.platform === 'Linux';
+var isDarwin = process.platform === 'darwin';
 
 function successIcon() {
   return isDarwin ? '✅' : '';
