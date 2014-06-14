@@ -1,7 +1,12 @@
 {
   "name": "karma-growl-notifications-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Karma growl reporter that falls back to Notification Center support on OS X",
+  "homepage": "https://github.com/alexgb/karma-growl-notifications-reporter",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexgb/karma-growl-notifications-reporter.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
