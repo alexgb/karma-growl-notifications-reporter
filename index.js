@@ -3,48 +3,48 @@ var growl = require('growl');
 var os = require('os');
 var isDarwin = process.platform === 'darwin';
 
-function successIcon() {
+function successEmoji() {
   return isDarwin ? '✅' : '';
 }
 
-function errorIcon() {
+function errorEmoji() {
   return isDarwin ? '🚫' : '';
 }
 
-function errorImage() {
-    if (os.type() == 'Linux') {
-        return 'dialog-error';
-    }
-    return '';
+function successIcon() {
+  if (os.type() == 'Linux') {
+    return 'dialog-ok';
+  }
+  return '';
 }
 
-function successImage() {
-    if (os.type() == 'Linux') {
-        return 'dialog-ok';
-    }
-    return '';
+function errorIcon() {
+  if (os.type() == 'Linux') {
+    return 'dialog-error';
+  }
+  return '';
 }
 
 var GrowlNotificationsReporter = function(helper, logger) {
   this.onBrowserComplete = function(browser) {
     var results = browser.lastResult;
     var time = helper.formatTimeInterval(results.totalTime);
-    var title, message, icon = '';
+    var title, message, icon;
 
     if (results.disconnected || results.error) {
       title = util.format('ERROR - %s', browser.name);
       message = 'Test error';
-      icon = errorImage();
+      icon = errorIcon();
     }
     else if (results.failed) {
-      title = util.format('%s FAILED - %s', errorIcon(), browser.name);
+      title = util.format('%s FAILED - %s', errorEmoji(), browser.name);
       message = util.format('%d/%d tests failed in %s.', results.failed, results.total, time);
-      icon = errorImage();
+      icon = errorIcon();
     }
     else {
-      title = util.format('%s PASSED - %s', successIcon(), browser.name);
+      title = util.format('%s PASSED - %s', successEmoji(), browser.name);
       message = util.format('%d tests passed in %s.', results.success, time);
-      icon = successImage();
+      icon = successIcon();
     }
 
     growl(message, {title: title, image: icon});
